@@ -3,18 +3,18 @@
 
 // WiFi settings
 // These must be customized for your network. It should be self explanitory.
-#define WIFI_NETWORK            "EyesOnBack"
-#define WIFI_PASSWORD           "Il!kech33z!ts"
+#define WIFI_NETWORK            "INSERT_YOURS"
+#define WIFI_PASSWORD           "INSERT_YOURS"
 #define WIFI_TIMEOUT_MS         20000 // 20 second WiFi connection timeout
 #define WIFI_RECOVER_TIME_MS    30000 // Wait 30 seconds after a failed connection attempt
 #define HOSTNAME                "TipsyBrewKettle" // also used for domain name
 
 // NTP settings
 const char* ntpServer =             "us.pool.ntp.org";
-const long  gmtOffset_sec =         -18000;     // US East Coast
+const long  gmtOffset_sec =         -18000;     // US East Coast (Adjust for your locale)
 const int   daylightOffset_sec =    3600;
 
-// Temperature settings
+// Temperature settings (all Celcius)
 const float targetPreheat =         60.0;
 const float targetTemp =            100.0;
 #define TEMP_READ_FREQ              15000       // The temperature reading is stored once every this many ms
@@ -34,6 +34,6 @@ const float timeoutHeat =           540000;     // maximum runtime of kettle in 
 #define OTA_USER        "admin"
 #define OTA_PASS        "tipsybrewrules"
 
-#define VERSION         "06.2023-4"
+#define VERSION         "07.2023-1"
 
 #endif

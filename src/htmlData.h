@@ -37,6 +37,7 @@ const char htmlMain[] PROGMEM = R"rawliteral(
         p {font-size: 14px;color: #888;margin-bottom: 10px;}
         .leftCol {display:inline-block; padding-right:10px;}
         .rightCol {display:inline-block; padding-left:10px;}
+        #tbkVersion { font-size: 12px; color: #888; text-decoration: none;}
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -88,7 +89,7 @@ const char htmlMain[] PROGMEM = R"rawliteral(
         <p>Heat Status: <span id="heatStatus">OFF</span></p><a id="heatLink" class="button button-on" nohref>ON</a>
     </span>
     <p id="datetime"></p>
-    <p id="tbkVersion">TBK version </p>
+    <a id="tbkVersion" href="version">TBK version </a>
     <div id="heap" style="display: none;"></div>
     <script>
         $(document).ready(function(){
