@@ -42,6 +42,7 @@ float lastOnPump = 0;
 
 // Used to debounce the float switch
 // Note: at the time of writing I only have one float switch and it is very jittery at full, this may be a fault of the switch, but I added the debounce in case it is common
+// Note on the previous note: Apparently it wasn't very jittery, the pin I was using seemed to have something else running on it. I regret not noting which pin it was because it caused a big headache. I am keeping the debounce in though because it may help anyways.
 bool lastFloatState = LOW;
 float lastDebounceTime = 0;
 float debounceDelay = 50;
@@ -152,7 +153,7 @@ String statusJSON() {
   status["heat"] = heatStatus;
   status["kettle"] = kettleFull;
   status["pendingheat"] = pendingHeat;
-  status["tempNow"] = tempReading;
+  status["tempreading"] = tempReading;
   status["datetime"] = strLocalTime();
   status["version"] = VERSION;
 
