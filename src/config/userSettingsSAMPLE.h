@@ -1,3 +1,4 @@
+// NOTE: You need to copy this file as userSettings.h and customize it to your personal settings in order to use TipsyBrew Kettle!!!
 #ifndef USER_SETTINGS
 #define USER_SETTINGS
 
