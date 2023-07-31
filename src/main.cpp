@@ -362,9 +362,6 @@ void setup() {
   
   sensors.begin();
 
-  kettleArm.attach(SERVO);
-  kettleOff();
-
   Serial.println("Connecting to ");
   Serial.println(WIFI_NETWORK);
 
@@ -385,6 +382,9 @@ void setup() {
     Serial.println(F("Error starting mDNS"));
     return;
   }
+
+  kettleArm.attach(SERVO);
+  kettleOff();
 
   //server.on("/", handle_OnConnect);
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
