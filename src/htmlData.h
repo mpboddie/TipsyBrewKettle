@@ -3,21 +3,6 @@
 
 #include <Arduino.h>
 
-const char JSbehaviors[] PROGMEM = R"rawliteral(
-<script>
-$(document).ready(function(){  
-    $("#pumpLink").click(function(){
-        $.getJSON("pumptoggle", function(result){
-            console.log(result);
-            if(result.pump) { $("#pumpStatus").html("ON"); } else { $("#pumpStatus").html("OFF"); }
-            if(result.heat) { $("#heatStatus").html("ON"); } else if (result.pendingheat) { $("#heatStatus").html("PENDING"); } else { $("#heatStatus").html("OFF"); }
-            $("#datetime").html(result.datetime);
-        });
-    });
-});
-</script>
-)rawliteral";
-
 const char htmlMain[] PROGMEM = R"rawliteral(
 <!DOCTYPE html> <html>
 <head>
@@ -110,14 +95,9 @@ const char htmlMain[] PROGMEM = R"rawliteral(
             setTimeout(initWebSocket, 2000);
         }
         function onMessage(event) {
-            var state;
-            if (event.data == "1"){
-            state = "ON";
-            }
-            else{
-            state = "OFF";
-            }
-            document.getElementById('state').innerHTML = state;
+            var server_msg = event.data;
+            console.log(server_msg);
+            status = server_msg;
         }
         $(document).ready(function(){
             $("#currentTemp").html(status.tempreading + "&#176;C");

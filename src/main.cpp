@@ -177,7 +177,7 @@ String tempsJSON() {
   return buf;
 }
 
-String SendHTML(uint8_t pumpstat, uint8_t heatstat, uint8_t kettle, float temp){
+/*String SendHTML(uint8_t pumpstat, uint8_t heatstat, uint8_t kettle, float temp){
   char buff[6];
   String tempLabels = "      labels: [";
   String tempData = "        data: [";
@@ -283,14 +283,13 @@ String SendHTML(uint8_t pumpstat, uint8_t heatstat, uint8_t kettle, float temp){
   ptr +="</body>\n";
   ptr +="</html>\n";
   return ptr;
-}
+}*/
 
 String processor(const String& var){
-  //Serial.println(var);
   if(var == "JSON_DATA"){
     String jsonData = "";
-    jsonData += "const status = JSON.parse('" + statusJSON() + "');";
-    jsonData += "const temps = JSON.parse('" + tempsJSON() + "');";
+    jsonData += "var status = JSON.parse('" + statusJSON() + "');";
+    jsonData += "var temps = JSON.parse('" + tempsJSON() + "');";
     return jsonData;
   }
   return String();
@@ -411,7 +410,7 @@ void setup() {
 
   //server.on("/", handle_OnConnect);
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(200, F("text/html"), SendHTML(pumpStatus, heatStatus, kettleFull, tempReading));
+    request->send_P(200, F("text/html"), htmlMain, processor);
   });
   //server.on("/pumptoggle", handle_pumptoggle);
   server.on("/pumptoggle", HTTP_GET, [](AsyncWebServerRequest *request){
@@ -429,7 +428,6 @@ void setup() {
   });
   
   server.begin();
-  Serial.println(F("HTTP server started"));
 
   //init and get the time
   configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
